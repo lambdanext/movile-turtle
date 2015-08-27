@@ -45,10 +45,10 @@
     [x' y' angle]))
 
 (defmethod draw :left [[x y angle] [_ a]]
-  [x y (+ angle (* a q/DEG-TO-RAD))])
+  [x y (- angle (* a q/DEG-TO-RAD))])
 
 (defmethod draw :right [[x y angle] [_ a]]
-  [x y (- angle (* a q/DEG-TO-RAD))])
+  [x y (+ angle (* a q/DEG-TO-RAD))])
 
 (defmethod draw :hue [state [_ h]]
   (q/stroke (q/color h 255 255))
