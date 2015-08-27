@@ -14,6 +14,6 @@
 (defn to-logo
   [step & {:keys [fwd] :or {fwd 10}}]
   (case step
-    :s [:fwd 10]
+    :s [:fwd fwd]
     :l [:left 60]
     :r [:right 120]))
