@@ -4,7 +4,11 @@ A Clojure library designed to ... well, that part is up to you.
 
 ## Usage
 
-FIXME
+```
+(use '[movile-turtle.core :only [show!]])
+
+(show! [[:right 30] [:fwd 200] [:left 180] [:fwd 100] [:left 60] [:fwd 100]])
+```
 
 ## License
 

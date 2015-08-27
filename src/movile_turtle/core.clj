@@ -24,7 +24,8 @@
   :draw render
   :size [size size])
 
-(defn show! "Renders a sequence of ops on screen." 
+(defn show!
+  "Renders a sequence of ops on screen. You can provide an optional delay between ops." 
   ([new-ops] (show! 10 new-ops))
   ([t new-ops]
     (reset! ops [])
@@ -32,15 +33,15 @@
       (swap! ops conj op)
       (when (pos? t) (Thread/sleep t)))))
 
-(defmethod draw :move [[x y angle] [_ d]]
-  (let [x' (+ x (* d (Math/cos angle)))
-        y' (+ y (* d (Math/sin angle)))]
-    [x' y' angle]))
-
 (defmethod draw :fwd [[x y angle] [_ d]]
   (let [x' (+ x (* d (Math/cos angle)))
         y' (+ y (* d (Math/sin angle)))]
     (q/line x y x' y')
+    [x' y' angle]))
+
+(defmethod draw :jump [[x y angle] [_ d]]
+  (let [x' (+ x (* d (Math/cos angle)))
+        y' (+ y (* d (Math/sin angle)))]
     [x' y' angle]))
 
 (defmethod draw :left [[x y angle] [_ a]]
